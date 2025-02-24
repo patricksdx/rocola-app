@@ -1,5 +1,5 @@
-import { Home, Inbox, Music2 } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Home, Inbox, LucideRabbit, Music2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -10,30 +10,33 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 export function AppSidebar() {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar } = useSidebar();
 
   // Función para cerrar solo en móviles
   const handleClick = () => {
     if (window.innerWidth < 768) {
-      toggleSidebar()
+      toggleSidebar();
     }
-  }
+  };
 
   // Menú de navegación con rutas
   const items = [
     { title: "Inicio", url: "/", icon: Home, onclick: handleClick },
     { title: "About", url: "/about", icon: Inbox, onclick: handleClick },
     { title: "Musica", url: "/music", icon: Music2, onclick: handleClick },
-  ]
+  ];
 
   return (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Aplicación</SidebarGroupLabel>
+          <SidebarGroupLabel className="flex flex-col items-start my-5">
+            <h1 className="text-xl text-primary flex gap-5">El Rabbit Music <LucideRabbit /></h1>
+            
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
@@ -51,5 +54,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
